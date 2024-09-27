@@ -1,15 +1,26 @@
+from typing import Any
 from django.shortcuts import render
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
-from .forms import forms MenuForm, IngredientForm, RequirementForm, PurchaseForm
-from django.views.generic import ListView
+from .forms import MenuForm, IngredientForm, RequirementForm, PurchaseForm
+from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
 
 
 # Create your views here.
 
+
+class HomeView(TemplateView):
+    template_name = 'Inventory/home.html'
+
 class IngredientsView(ListView):
     model = Ingredient
     template_name = "Inventory/ingredient_list.html"
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['ingredients'] = Ingredient.objects.all()
+        return context
+   
 
 class CreateIngredientView(CreateView):
     model = Ingredient
@@ -30,6 +41,11 @@ class MenuView(ListView):
     model = MenuItem
     template_name = 'Inventory/menu.html'
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['menu'] = MenuItem.objects.all()
+        return context
+
 class CreateMenuItemView(CreateView):
     model = MenuItem
     template_name = 'Inventory/add_menu_item.html'
@@ -49,6 +65,11 @@ class RequirementView(ListView):
     model = RecipeRequirement
     template_name = 'Inventory/requirement.html'
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['requirements'] = RecipeRequirement.objects.all()
+        return context
+
 class CreateRequirementView(CreateView):
     model = RecipeRequirement
     template_name = 'Inventory/add_requirement.html'
@@ -67,6 +88,11 @@ class DeleteRequirementView(DeleteView):
 class PurchaseView(ListView):
     model = Purchase
     template_name = 'Inventory/purchase.html'
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['purchases'] = Purchase.objects.all()
+        return context
 
 class CreatePurchaseView(CreateView):
     model = Purchase

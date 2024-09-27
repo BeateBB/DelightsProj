@@ -1,0 +1,24 @@
+{% extends 'Inventory/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h2>Recipe requirements</h2>
+<table>
+    <tr>
+        <th>Dish</th>
+        <th>Ingredient</th>
+        <th>Quantity</th>
+    </tr>
+    {% for item in requirements %}
+    <tr>
+        <th>{{ item.menu_item }}</th>
+        <th>{{ item.ingredient }}</th>
+        <th>{{ item.quantity }}</th>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

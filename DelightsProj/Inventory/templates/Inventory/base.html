@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <a href="{% url 'home' %}"><h1><center>Restaurant Happy Rabbit</center></h1></a>
+    <table>
+            <th><h4><a href="{% url 'menu' %}">Menu</a></h4></th>
+            <th><h4><a href="{% url 'ingredientlist' %}">Ingredients</a></h4></th>
+            <th><h4><a href="{% url 'requirement' %}">Recipe requirements</a></h4></th>
+            <th><h4><a href="{% url 'purchase' %}">Purchases</a></h4></th>
+        </tr>
+    </table>
+
+    {% block content %}
+    
+    {% endblock %}
+    
+</body>

@@ -1,0 +1,26 @@
+{% extends 'Inventory/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h2>Purchases</h2>
+<table>
+    <tr>
+        <th>Customer name</th>
+        <th>Dish</th>
+        <th>Quantity</th>
+        <th>Time</th>
+    </tr>
+    {% for item in purchases %}
+    <tr>
+        <th>{{ item.customer_name }}</th>
+        <th>{{ item.purchased_item }}</th>
+        <th>{{ item.quantity }}</th>
+        <th>{{ item.purchased_time }}</th>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
