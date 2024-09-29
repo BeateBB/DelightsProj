@@ -9,6 +9,9 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.ingredient_name
+    
+    def get_absolut_url(self):
+        return '/ingredient'
 
 
 class MenuItem(models.Model):
@@ -18,6 +21,8 @@ class MenuItem(models.Model):
     def __str__(self):
         return self.item_name
     
+    def get_absolut_url(self):
+        return '/menu'
 
 
 class RecipeRequirement(models.Model):
@@ -27,6 +32,9 @@ class RecipeRequirement(models.Model):
 
     def __str__(self):
         return str(self.menu_item)
+    
+    def get_absolut_url(self):
+        return '/requirement'
 
 
 class Purchase(models.Model):
@@ -38,6 +46,8 @@ class Purchase(models.Model):
     def __str__(self):
         return str(self.purchased_item)
     
+    def get_absolut_url(self):
+        return '/purchase'
     
 
 

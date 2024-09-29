@@ -32,11 +32,13 @@ class UpdateIngredientView(UpdateView):
     model = Ingredient
     template_name = 'Ínventory/update_ingedient.html'
     form_class = IngredientForm
+    success_url = 'ingredient_list.html'
 
 class DeleteIngredientView(DeleteView):
     model = Ingredient
     template_name = 'Inventory/delete_ingredient.html'
     success_url = '/ingredient_list'
+    success_url = 'ingredient_list.html'
 
 class MenuView(ListView):
     model = MenuItem
@@ -57,6 +59,7 @@ class UpdateMenuItemView(UpdateView):
     model = MenuItem
     template_name = 'Inventory/update_menu_item.html'
     form_class = MenuForm
+    success_url='menu.html'
 
 class DeleteMenuItemView(DeleteView):
     model = MenuItem
@@ -82,11 +85,11 @@ class UpdateRequirementView(UpdateView):
     model = RecipeRequirement
     template_name = 'Inventory/update_requirement.html'
     form_class = RequirementForm
-
+    success_url='requirement.html'
 class DeleteRequirementView(DeleteView):
     model = RecipeRequirement
     template_name = 'Inventory/delete_requirement.html'
-    success_url = '/requirement'
+    success_url='requirement.html'
 
 class PurchaseView(ListView):
     model = Purchase
@@ -107,8 +110,9 @@ class UpdatePurchaseView(UpdateView):
     model = Purchase
     template_name = 'Inventory/update_purchase.html'
     form_class = PurchaseForm
+    success_url='purchase.html'
 
 class DeletePurchaseView(DeleteView):
     model = Purchase
     template_name = 'Inventory/delete_purchase.html'
-    success_url = '/purchase'
+    success_url='purchase.html'

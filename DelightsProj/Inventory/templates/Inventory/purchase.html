@@ -19,6 +19,8 @@
         <th>{{ item.purchased_item }}</th>
         <th>{{ item.quantity }}</th>
         <th>{{ item.purchased_time }}</th>
+        <th><a href="{% url 'updatepurchase' item.id %}">Edit purchase</a></th>
+        <th><a href="{% url 'deletepurchase' item.id %}">Delete purchase</a></th>
     </tr>
     {% endfor %}
 </table>

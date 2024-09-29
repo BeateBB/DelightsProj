@@ -22,6 +22,8 @@
         <th>{{ item.unit_price }}</th>
         <th>{{ item.unit }}</th>
         <th>{{ item.quantity }}</th>
+        <th><a href="{% url 'updateingredient' item.id %}">Edit ingredient</a></th>
+        <th><a href="{% url 'deleteingredient' item.id %}">Delete ingredient</a></th>
     </tr>
     {% endfor %}
 </table>
