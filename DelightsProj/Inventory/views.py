@@ -26,6 +26,7 @@ class CreateIngredientView(CreateView):
     model = Ingredient
     template_name = "Inventory/add_ingredient.html"
     form_class = IngredientForm
+    success_url = 'ingredient_list.html'
 
 class UpdateIngredientView(UpdateView):
     model = Ingredient
@@ -50,6 +51,7 @@ class CreateMenuItemView(CreateView):
     model = MenuItem
     template_name = 'Inventory/add_menu_item.html'
     form_class = MenuForm
+    success_url='menu.html'
 
 class UpdateMenuItemView(UpdateView):
     model = MenuItem
@@ -74,6 +76,7 @@ class CreateRequirementView(CreateView):
     model = RecipeRequirement
     template_name = 'Inventory/add_requirement.html'
     form_class = RequirementForm
+    success_url='requirement.html'
 
 class UpdateRequirementView(UpdateView):
     model = RecipeRequirement
@@ -98,6 +101,7 @@ class CreatePurchaseView(CreateView):
     model = Purchase
     template_name = 'Inventory/add_purchase.html'
     form_class = PurchaseForm
+    success_url='purchase.html'
 
 class UpdatePurchaseView(UpdateView):
     model = Purchase

@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class Ingredient(models.Model):
     ingredient_name = models.CharField(max_length=30)
@@ -30,7 +31,7 @@ class RecipeRequirement(models.Model):
 
 class Purchase(models.Model):
     customer_name = models.CharField(max_length=30)
-    purchase_time = models.DateTimeField()
+    purchase_time = models.DateTimeField(default=datetime.now())
     purchased_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
 

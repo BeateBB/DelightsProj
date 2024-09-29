@@ -1,0 +1,15 @@
+{% extends 'Inventory/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h2>Add new ingredient</h2>
+<form action="" method = "POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type = 'submit'/>
+
+</form>
+{% endblock %}

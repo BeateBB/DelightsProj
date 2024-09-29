@@ -21,8 +21,11 @@
             <td>{{ item.price }}</td>
         </tr>
     {% endfor %}
+
     </tbody>
 
 </table>
+<p><a href="{% url 'addmenuitem' %}">Add new recipe</a></p>
+</tbody>
 
 {% endblock %}
