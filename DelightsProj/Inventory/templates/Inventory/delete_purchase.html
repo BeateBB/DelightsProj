@@ -1,0 +1,15 @@
+{% extends 'Inventory/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h2>Delete purchase</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete a purchase from {{ object.customer_name }}?</p>
+    <input type="submit" value="Confirm"/>
+</form>
+
+{% endblock %}

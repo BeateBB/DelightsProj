@@ -26,19 +26,19 @@ class CreateIngredientView(CreateView):
     model = Ingredient
     template_name = "Inventory/add_ingredient.html"
     form_class = IngredientForm
-    success_url = 'ingredient_list.html'
+    success_url = '/ingredients'
 
 class UpdateIngredientView(UpdateView):
     model = Ingredient
-    template_name = 'Ínventory/update_ingedient.html'
+    template_name = 'Inventory/update_ingredient.html'
     form_class = IngredientForm
-    success_url = 'ingredient_list.html'
+    success_url = '/ingredients'
 
 class DeleteIngredientView(DeleteView):
     model = Ingredient
     template_name = 'Inventory/delete_ingredient.html'
-    success_url = '/ingredient_list'
-    success_url = 'ingredient_list.html'
+    success_url = '/ingredients'
+    
 
 class MenuView(ListView):
     model = MenuItem
@@ -53,13 +53,13 @@ class CreateMenuItemView(CreateView):
     model = MenuItem
     template_name = 'Inventory/add_menu_item.html'
     form_class = MenuForm
-    success_url='menu.html'
+    success_url='/menu'
 
 class UpdateMenuItemView(UpdateView):
     model = MenuItem
     template_name = 'Inventory/update_menu_item.html'
     form_class = MenuForm
-    success_url='menu.html'
+    success_url='/menu'
 
 class DeleteMenuItemView(DeleteView):
     model = MenuItem
@@ -79,17 +79,17 @@ class CreateRequirementView(CreateView):
     model = RecipeRequirement
     template_name = 'Inventory/add_requirement.html'
     form_class = RequirementForm
-    success_url='requirement.html'
+    success_url='/requirements'
 
 class UpdateRequirementView(UpdateView):
     model = RecipeRequirement
     template_name = 'Inventory/update_requirement.html'
     form_class = RequirementForm
-    success_url='requirement.html'
+    success_url='/requirements'
 class DeleteRequirementView(DeleteView):
     model = RecipeRequirement
     template_name = 'Inventory/delete_requirement.html'
-    success_url='requirement.html'
+    success_url='/requirements'
 
 class PurchaseView(ListView):
     model = Purchase
@@ -104,15 +104,15 @@ class CreatePurchaseView(CreateView):
     model = Purchase
     template_name = 'Inventory/add_purchase.html'
     form_class = PurchaseForm
-    success_url='purchase.html'
+    success_url='/purchases'
 
 class UpdatePurchaseView(UpdateView):
     model = Purchase
     template_name = 'Inventory/update_purchase.html'
     form_class = PurchaseForm
-    success_url='purchase.html'
+    success_url='/purchases'
 
 class DeletePurchaseView(DeleteView):
     model = Purchase
     template_name = 'Inventory/delete_purchase.html'
-    success_url='purchase.html'
+    success_url='/purchases'
