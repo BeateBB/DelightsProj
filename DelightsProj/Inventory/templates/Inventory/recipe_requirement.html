@@ -15,13 +15,12 @@
     {% for item in requirements %}
     <tr>
         <th>{{ item.menu_item }}</th>    
-        <th>{{ item.ingredient }}</th>
+        <th>{{ item.ingredients }}</th>
         <th>{{ item.quantity }}</th>
-        <th><a href="{% url 'updaterequirement' item.id %}">Edit recipe requirement</a></th>
-        <th><a href="{% url 'deleterequirement' item.id %}">Delete recipe requirement</a></th>
+        
     </tr>
     {% endfor %}
 </table>
-<p><a href="{% url 'addrequirement' %}">Add new recipe requirement</a></p>
+
 
 {% endblock %}

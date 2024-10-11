@@ -1,0 +1,21 @@
+{% extends 'Inventory/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h2>Total information about the day</h2>
+<table>
+    <tr>
+        <th>Number of purchases</th>
+        <th>Total cost of ingredients</th>
+        <th>Total revenue</th>
+    </tr>
+    <tr>
+        <th>{{ summary.num_purchases }}</th>
+        <th>{{ summary.total_cost }}</th>  
+        <th>{{ summary.total_revenue }}</th>
+    </tr>
+</table>
+{% endblock %}

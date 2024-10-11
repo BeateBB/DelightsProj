@@ -19,4 +19,5 @@ urlpatterns = [
     path('ingrediets/delete/<pk>', views.DeleteIngredientView.as_view(),name='deleteingredient'),
     path('requirements/delete/<pk>',views.DeleteRequirementView.as_view(),name='deleterequirement'),
     path('purchases/delete/<pk>',views.DeletePurchaseView.as_view(),name='deletepurchase'),
+    path('day_summary/',views.DaySummaryView.as_view(), name='daysummary'),
 ]

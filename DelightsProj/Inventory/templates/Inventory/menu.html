@@ -11,6 +11,8 @@
     <tr>
         <th>Dish</th>
         <th>Price</th>
+        <th>Cost</th>
+        <th>Revenue</th>
     </tr>
     </thead>
     <tbody>
@@ -19,6 +21,8 @@
         <tr>
             <td>{{ item.item_name }}</td>
             <td>{{ item.price }}</td>
+            <td>{{ item.cost }}</td>
+            <td>{{ item.revenue }}</td>
             <td><a href="{% url 'updatemenuitem' item.id %}">Edit recipe</a></td>
             <td><a href="{% url 'deletemenuitem' item.id %}">Delete recipe</a></td>
         </tr>

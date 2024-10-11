@@ -1,8 +1,9 @@
 from typing import Any
 from django.shortcuts import render
-from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
+from .models import Ingredient, MenuItem, RecipeRequirement, Purchase, DaySummary
 from .forms import MenuForm, IngredientForm, RequirementForm, PurchaseForm
 from django.views.generic import ListView, TemplateView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
 
 
@@ -11,6 +12,15 @@ from django.views.generic.edit import DeleteView, CreateView, UpdateView
 
 class HomeView(TemplateView):
     template_name = 'Inventory/home.html'
+
+class DaySummaryView(TemplateView):
+    template_name = 'Inventory/day_summary.html'
+    model = DaySummary
+    
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['summary'] = DaySummary.objects.first()
+        return context
 
 class IngredientsView(ListView):
     model = Ingredient
@@ -86,10 +96,12 @@ class UpdateRequirementView(UpdateView):
     template_name = 'Inventory/update_requirement.html'
     form_class = RequirementForm
     success_url='/requirements'
+
 class DeleteRequirementView(DeleteView):
     model = RecipeRequirement
     template_name = 'Inventory/delete_requirement.html'
     success_url='/requirements'
+
 
 class PurchaseView(ListView):
     model = Purchase
@@ -116,3 +128,4 @@ class DeletePurchaseView(DeleteView):
     model = Purchase
     template_name = 'Inventory/delete_purchase.html'
     success_url='/purchases'
+
