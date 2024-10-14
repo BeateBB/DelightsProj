@@ -1,17 +1,30 @@
 from typing import Any
 from django.shortcuts import render
-from .models import Ingredient, MenuItem, RecipeRequirement, Purchase, DaySummary
+from .models import Ingredient, MenuItem, RecipeRequirement, Purchase, DaySummary, Day
 from .forms import MenuForm, IngredientForm, RequirementForm, PurchaseForm
 from django.views.generic import ListView, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 # Create your views here.
 
 
 class HomeView(TemplateView):
     template_name = 'Inventory/home.html'
+    model = Day
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['days'] = Day.objects.all()
+        return context
+    
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/sign_up.html'
 
 class DaySummaryView(TemplateView):
     template_name = 'Inventory/day_summary.html'
@@ -50,7 +63,7 @@ class DeleteIngredientView(DeleteView):
     success_url = '/ingredients'
     
 
-class MenuView(ListView):
+class MenuView(LoginRequiredMixin,ListView):
     model = MenuItem
     template_name = 'Inventory/menu.html'
 
@@ -59,7 +72,7 @@ class MenuView(ListView):
         context['menu'] = MenuItem.objects.all()
         return context
 
-class CreateMenuItemView(CreateView):
+class CreateMenuItemView(LoginRequiredMixin,CreateView):
     model = MenuItem
     template_name = 'Inventory/add_menu_item.html'
     form_class = MenuForm

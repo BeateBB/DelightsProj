@@ -1,0 +1,14 @@
+{% extends 'Inventory/base.html '%}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h2>Sing up</h2>
+<form class="singup" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Signup"/>
+</form>
+{% endblock %}

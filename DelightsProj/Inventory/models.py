@@ -85,6 +85,11 @@ class Purchase(models.Model):
         return super().clean()
 
     def save(self):
+        day = Day.objects.get_or_create(date = datetime.today())
+        day.purchases.add(self)
+
+
+        
         
         if not DaySummary.objects.first():
             DaySummary.objects.create()
@@ -106,3 +111,8 @@ class DaySummary(models.Model):
 
 
 
+class Day(models.Model):
+    date = models.DateField(auto_now_add=True)
+    purchases = models.ManyToManyField(Purchase)
+    inventory = models.ManyToManyField(Ingredient)
+    summary = models.ForeignKey(DaySummary,on_delete=models.CASCADE)
