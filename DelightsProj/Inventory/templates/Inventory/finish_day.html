@@ -1,0 +1,18 @@
+{% extends 'Inventory/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>If you finish this day you'll not be able to add new purchases anymore.</p>
+    <p>Are you sure you want to end this day?</p>
+    <input type="submit"/>
+</form>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'Inventory/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>Customer name</th>
+        <th>Dish</th>
+        <th>Quantity</th>
+        <th>Time</th>
+        <th>Price</th>
+        <th>Cost</th>
+        <th>Revenue</th>
+    </tr>
+    {% for purchase in day.purchase_set.all %}
+    <tr>
+        <th>{{ purchase.customer_name }}</th>
+        <th>{{ purchase.purchased_item }}</th>
+        <th>{{ purchase.quantity }}</th>
+        <th>{{ purchase.purchase_time }}</th>
+        <th>{{ purchase.purchased_item.price }}</th>
+        <th>{{ purchase.purchased_item.cost }}</th>
+        <th>{{ purchase.purchased_item.revenue }}</th>
+    </tr>
+     {% endfor %}
+</table>
+
+{% endblock %}

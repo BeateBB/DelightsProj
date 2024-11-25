@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django import forms
-from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
+from .models import Ingredient, MenuItem, RecipeRequirement, Purchase, Day
 
 class MenuForm(forms.ModelForm):
     class Meta:
@@ -20,6 +20,11 @@ class RequirementForm(forms.ModelForm):
 class PurchaseForm(forms.ModelForm):
     class Meta:
         model = Purchase
-        fields = '__all__'
+        fields = ('customer_name', 'purchased_item', 'purchase_time', 'quantity')
 
 
+class DayForm(forms.ModelForm):
+    class Meta:
+        model = Day
+        fields = ("is_open",)
+        widgets = { 'is_open': forms.HiddenInput(),}

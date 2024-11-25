@@ -6,16 +6,17 @@
 
 {% block content %}
 
+
+<h2>List of ingredients</h2>
 <table>
-    <tr>
-        <h2>List of ingredients</h2>
-    </tr>
-    <tr>
-        <th>Ingredient</th>
-        <th>Price</th>
-        <th>Unit</th>
-        <th>Quantity</th>
-    </tr>
+    <thead>
+        <tr>
+            <th>Ingredient</th>
+            <th>Price</th>
+            <th>Unit</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
     {% for item in ingredients %}
     <tr>
         <th>{{ item.ingredient_name }}</th>
@@ -29,5 +30,6 @@
 </table>
 
 <p><a href="{% url 'addingredient' %}">Add new ingredient</a></p>
+
 
 {% endblock %}

@@ -13,16 +13,23 @@
         <th>Quantity</th>
         <th>Time</th>
     </tr>
+  
+{% if this_day.is_open == True %}
     {% for item in purchases %}
     <tr>
         <th>{{ item.customer_name }}</th>
         <th>{{ item.purchased_item }}</th>
         <th>{{ item.quantity }}</th>
-        <th>{{ item.purchased_time }}</th>
-        <th><a href="{% url 'updatepurchase' item.id %}">Edit purchase</a></th>
-        <th><a href="{% url 'deletepurchase' item.id %}">Delete purchase</a></th>
+        <th>{{ item.purchase_time }}</th>
+        <th><a href="{% url 'updatepurchase' item.id %}">Edit</a></th>
+        <th><a href="{% url 'deletepurchase' item.id %}">Delete</a></th>
     </tr>
     {% endfor %}
+
 </table>
 <p><a href="{% url 'addpurchase' %}">Create new purchase</a></p>
+<p><a href="{% url 'finishday' this_day.id %}">Finish this day</a></p>
+{% endif %}
+
+
 {% endblock %}

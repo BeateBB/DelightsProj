@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block content %}
-<h2><center>Menu</center></h2>
+<div class="menu">
+    <h3>Menu</h3>
+
 <table>
     <thead>
     <tr>
@@ -19,19 +21,29 @@
         <tr>
     {% for item in menu %}
         <tr>
+            {% if user.is_authenticated %}
             <td>{{ item.item_name }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.cost }}</td>
             <td>{{ item.revenue }}</td>
             <td><a href="{% url 'updatemenuitem' item.id %}">Edit recipe</a></td>
             <td><a href="{% url 'deletemenuitem' item.id %}">Delete recipe</a></td>
+            {% else %}
+            <td>{{ item.item_name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.cost }}</td>
+            <td>{{ item.revenue }}</td>
+            {% endif %}
+
         </tr>
+        
     {% endfor %}
 
     </tbody>
 
 </table>
+</div>
+
 <p><a href="{% url 'addmenuitem' %}">Add new recipe</a></p>
-</tbody>
 
 {% endblock %}

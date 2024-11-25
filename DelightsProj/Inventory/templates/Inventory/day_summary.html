@@ -18,4 +18,27 @@
         <th>{{ summary.total_revenue }}</th>
     </tr>
 </table>
+
+<p></p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Ingredients to purchase for tomorrow</th>
+        </tr>
+        <tr>
+            <th>Ingredient</th>
+            <th>Amount</th>
+            <th>Unit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ingredient in ingredients %}
+        <tr>
+            <td>{{ ingredient.ingredient_name }}</td>
+            <td>{{ ingredient.quantity_to_purchase }}</td>
+            <td>{{ ingredient.unit }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

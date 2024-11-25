@@ -6,7 +6,24 @@
 {% endblock %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
+
+
+<h3>List of purchases on the previous days</h3>
+    {% for day in days %}
+        {% if day.is_open == False %}
+        <p><a href="{% url 'purchasesbyday' day.id %}">{{ day.date }}</a></p>
+        {% endif %}
+    {% endfor %}
+
+
+{% else %}
+
 <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'signup' %}">sign up</a> to see
 the avaliable ingredients and purchases made</p>
+
+{% endif %}
+
 
 {% endblock %}
