@@ -26,6 +26,7 @@
             <td>{{ item.price }}</td>
             <td>{{ item.cost }}</td>
             <td>{{ item.revenue }}</td>
+            <td><a href="{% url 'recipe' item.id %}">View recipe</a></td>
             <td><a href="{% url 'updatemenuitem' item.id %}">Edit recipe</a></td>
             <td><a href="{% url 'deletemenuitem' item.id %}">Delete recipe</a></td>
             {% else %}

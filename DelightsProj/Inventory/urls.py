@@ -25,5 +25,6 @@ urlpatterns = [
     path('accounts/profile/', views.HomeView.as_view(), name='days'),
     path('days/<pk>/purchases/', views.PurchasesByDayView.as_view(), name='purchasesbyday'),
     path('purchases/<pk>/finish_day', views.FinishDayView.as_view(), name='finishday'),
+    path('menu/<pk>/recipe',views.RecipeDetailView.as_view(), name='recipe'),
 
 ]

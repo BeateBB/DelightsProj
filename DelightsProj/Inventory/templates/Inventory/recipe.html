@@ -1,0 +1,27 @@
+{% extends 'Inventory/base.html '%}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h2> {{ MenuItem }} recipe</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Ingredient</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for recipe in MenuItem.reciperequirement_set.all %}
+        <tr>
+            <td>{{ recipe.ingredient }}</td>
+            <td>{{ recipe.quantity }}</td>
+            <td>{{ recipe.ingredient.unit }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

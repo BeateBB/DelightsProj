@@ -106,6 +106,12 @@ class DeleteMenuItemView(LoginRequiredMixin, DeleteView):
     template_name = 'Inventory/delete_menu_item.html'
     success_url = '/menu'
 
+# RecipeRequiremet view for MenuItem
+class RecipeDetailView(DetailView):
+    model = MenuItem
+    template_name = 'Inventory/recipe.html'
+    context_object_name = 'MenuItem'
+
 class RequirementView(ListView):
     model = RecipeRequirement
     template_name = 'Inventory/requirement.html'
