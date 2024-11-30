@@ -5,7 +5,7 @@ from .models import Ingredient, MenuItem, RecipeRequirement, Purchase, Day
 class MenuForm(forms.ModelForm):
     class Meta:
         model = MenuItem
-        fields = "__all__"
+        fields = ('item_name','price')
 
 class IngredientForm(forms.ModelForm):
     class Meta:
