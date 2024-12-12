@@ -11,14 +11,19 @@ class MenuItem(models.Model):
     revenue = models.FloatField(default=0.0)
 
     def calc_revenue(self):
-        self.revenue = self.price - self.cost
-        self.save()
+        self.revenue = round(self.price - self.cost,1)
+        
+    
     
     def __str__(self):
         return self.item_name
     
     def get_absolute_url(self):
-        return '/menu'    
+        return '/menu'
+
+    def save(self):
+        self.calc_revenue()
+        super(MenuItem,self).save()    
 
     
 class Ingredient(models.Model):
@@ -32,7 +37,8 @@ class Ingredient(models.Model):
     quantity_to_purchase = models.FloatField(default=0.0)
 
     def purchase_ingredient(self):
-        self.quantity_to_purchase = self.start_quantity - self.quantity
+        if self.quantity < self.start_quantity:
+            self.quantity_to_purchase = self.start_quantity - self.quantity
 
     def __str__(self):
         return self.ingredient_name

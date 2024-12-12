@@ -20,11 +20,10 @@
             <td>{{ recipe.ingredient }}</td>
             <td>{{ recipe.quantity }}</td>
             <td>{{ recipe.ingredient.unit }}</td>
-            <td><a href="{% url 'updaterequirement' recipe.id %}">Edit</a></td>
-            <td><a href="{% url 'deleterequirement' recipe.id %}">Delete</a></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<a href="{% url 'addrequirement' %}">Add new ingredient</a>
+<a href="{% url 'addrecipe' MenuItem.id %}">Add new ingredient to the recipe</a>
+
 {% endblock %}

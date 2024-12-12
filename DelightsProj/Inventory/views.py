@@ -5,10 +5,10 @@ from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase, Day
-from .forms import MenuForm, IngredientForm, RequirementForm, PurchaseForm, DayForm
-from django.views.generic import ListView, TemplateView
+from .forms import MenuForm, IngredientForm, RequirementForm, PurchaseForm, DayForm, RecipeFormSet
+from django.views.generic import ListView, TemplateView, View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView, CreateView, UpdateView
+from django.views.generic.edit import DeleteView, CreateView, UpdateView, FormView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -112,31 +112,25 @@ class RecipeDetailView(DetailView):
     template_name = 'Inventory/recipe.html'
     context_object_name = 'MenuItem'
 
-class RequirementView(ListView):
-    model = RecipeRequirement
-    template_name = 'Inventory/requirement.html'
-
-    def get_context_data(self):
-        context = super().get_context_data()
-        context['requirements'] = RecipeRequirement.objects.all()
-        return context
-
-class CreateRequirementView(LoginRequiredMixin, CreateView):
-    model = RecipeRequirement
-    template_name = 'Inventory/add_requirement.html'
-    form_class = RequirementForm
-    success_url='/requirements'
-
-class UpdateRequirementView(LoginRequiredMixin, UpdateView):
-    model = RecipeRequirement
-    template_name = 'Inventory/update_requirement.html'
-    form_class = RequirementForm
-    success_url='/requirements'
-
-class DeleteRequirementView(LoginRequiredMixin, DeleteView):
-    model = RecipeRequirement
-    template_name = 'Inventory/delete_requirement.html'
-    success_url='/requirements'
+# Create RecipeRequirement for item in MenuItem objects
+class CreateRecipeView(LoginRequiredMixin, View):
+    model = MenuItem
+    template_name = 'Inventory/add_recipe.html'
+    success_url = '/menu'
+    
+    def get(self, request, *args, **kwargs):
+        menu_item = MenuItem.objects.get(pk=kwargs.get('pk'))       
+        formset = RecipeFormSet(instance=menu_item)
+        return render(request, self.template_name,{'formset': formset, 'menu_item': menu_item})
+    
+    def post(self,request, *args, **kwargs):
+        menu_item = MenuItem.objects.get(pk=kwargs.get('pk'))
+        formset = RecipeFormSet(request.POST, instance = menu_item)
+        if formset.is_valid():
+            formset.save()
+            return redirect(self.success_url)
+        #else:
+            #return render(request, self.template_name,{'formset': formset, 'menu_item': menu_item})
 
 
 class PurchaseView(ListView):
