@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django import forms
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase, Day
 
+
 class MenuForm(forms.ModelForm):
     class Meta:
         model = MenuItem
-        fields = "__all__"
+        fields = ('item_name','price')
 
 class IngredientForm(forms.ModelForm):
     class Meta:
@@ -15,7 +16,7 @@ class IngredientForm(forms.ModelForm):
 class RequirementForm(forms.ModelForm):
     class Meta:
         model = RecipeRequirement
-        fields = '__all__'
+        fields = ('ingredient','quantity')
 
 class PurchaseForm(forms.ModelForm):
     class Meta:
@@ -28,3 +29,9 @@ class DayForm(forms.ModelForm):
         model = Day
         fields = ("is_open",)
         widgets = { 'is_open': forms.HiddenInput(),}
+
+RecipeFormSet = forms.inlineformset_factory(MenuItem, RecipeRequirement, fields=['ingredient','quantity'], extra = 5)
+
+class RecipeForm(forms.ModelForm):
+    pass
+        

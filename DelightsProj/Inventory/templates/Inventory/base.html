@@ -13,7 +13,6 @@
 {% if user.is_authenticated %}    
     <table>
         <th><h4><a href="{% url 'menu' %}">Menu</a></h4></th>
-        <th><h4><a href="{% url 'requirement' %}">Recipe requirements</a></h4></th>
         <th><h4><a href="{% url 'ingredientlist' %}">Ingredients</a></h4></th>
         <th><h4><a href="{% url 'purchase' %}">Purchases</a></h4></th>
         <th><h4><a href="{% url 'daysummary' %}">Day summary</a></h4></th>
@@ -22,7 +21,6 @@
 {% else %}
     <table>
         <th><h4><a href="{% url 'menu' %}">Menu</a></h4></th>
-        <th><h4><a href="{% url 'requirement' %}">Recipe requirements</a></h4></th>
         </tr>
     </table>
 
