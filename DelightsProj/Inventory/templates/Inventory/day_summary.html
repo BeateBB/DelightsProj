@@ -7,19 +7,24 @@
 {% block content %}
 <h2>Total information about the day</h2>
 <table>
+    <thead>
     <tr>
         <th>Number of purchases</th>
         <th>Total cost of ingredients</th>
         <th>Total revenue</th>
     </tr>
+    </thead>
+
+    <tbody>
     <tr>
-        <th>{{ summary.num_purchases }}</th>
-        <th>{{ summary.total_cost }}</th>  
-        <th>{{ summary.total_revenue }}</th>
+        <td>{{ summary.num_purchases }}</td>
+        <td>{{ summary.total_cost }}</td>  
+        <td>{{ summary.total_revenue }}</td>
     </tr>
+    </tbody>
 </table>
 
-<p></p>
+
 <table>
     <thead>
         <tr>
@@ -41,4 +46,5 @@
         {% endfor %}
     </tbody>
 </table>
+
 {% endblock %}

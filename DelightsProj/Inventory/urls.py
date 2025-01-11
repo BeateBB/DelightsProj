@@ -18,6 +18,7 @@ urlpatterns = [
     path('day_summary/',views.DaySummaryView.as_view(), name='daysummary'),
     path('signup/', views.SignUp.as_view(), name = 'signup'),
     path('account/', include('django.contrib.auth.urls'), name='login'),
+    path('logout', include('django.contrib.auth.urls'), name='logout'),
     path('accounts/profile/', views.HomeView.as_view(), name='days'),
     path('days/<pk>/purchases/', views.PurchasesByDayView.as_view(), name='purchasesbyday'),
     path('purchases/<pk>/finish_day', views.FinishDayView.as_view(), name='finishday'),

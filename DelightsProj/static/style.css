@@ -7,7 +7,7 @@ h1 {
     font-family: 'Georgia';
 }
 
-h3 {
+h2 {
     color: darkblue;
 }
 
@@ -18,20 +18,11 @@ table {
     background-color: wheat;
     margin-right: auto;
     
-
 }
 
 td, th {
     width: 100px;
     height: 50px;
     text-align: center;
-
-}
-{
-    border: 1px solid rgba(52, 50, 50, 0.279);
-    border-collapse: collapse;
 }
 
-h3 {
-    margin-left: auto;
-}

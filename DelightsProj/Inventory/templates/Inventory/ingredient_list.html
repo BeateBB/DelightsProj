@@ -17,19 +17,21 @@
             <th>Quantity</th>
         </tr>
     </thead>
+    <tbody>
     {% for item in ingredients %}
     <tr>
-        <th>{{ item.ingredient_name }}</th>
-        <th>{{ item.unit_price }}</th>
-        <th>{{ item.unit }}</th>
-        <th>{{ item.quantity }}</th>
-        <th><a href="{% url 'updateingredient' item.id %}">Edit ingredient</a></th>
-        <th><a href="{% url 'deleteingredient' item.id %}">Delete ingredient</a></th>
+        <td>{{ item.ingredient_name }}</td>
+        <td>{{ item.unit_price }}</td>
+        <td>{{ item.unit }}</td>
+        <td>{{ item.quantity }}</td>
+        <td><a href="{% url 'updateingredient' item.id %}">Edit</a></td>
+        <td><a href="{% url 'deleteingredient' item.id %}">Delete</a></td>
     </tr>
     {% endfor %}
+    </tbody>
 </table>
 
-<p><a href="{% url 'addingredient' %}">Add new ingredient</a></p>
+<button><a href="{% url 'addingredient' %}">Add new ingredient</a></button>
 
 
 {% endblock %}

@@ -12,8 +12,7 @@ class MenuItem(models.Model):
 
     def calc_revenue(self):
         self.revenue = round(self.price - self.cost,1)
-        
-    
+           
     
     def __str__(self):
         return self.item_name
@@ -85,6 +84,7 @@ class Purchase(models.Model):
     
     def get_ingredients(self):
         recipe_reqs = RecipeRequirement.objects.filter(menu_item = self.purchased_item)
+        return recipe_reqs
         
 
     def __str__(self):
@@ -95,7 +95,7 @@ class Purchase(models.Model):
     
     
     def clean(self):
-        recipe_reqs = RecipeRequirement.objects.filter(menu_item = self.purchased_item)
+        recipe_reqs = self.get_ingredients()
         for recipe_req in recipe_reqs:
             ingredient = recipe_req.ingredient
             required_quantity = recipe_req.quantity*self.quantity

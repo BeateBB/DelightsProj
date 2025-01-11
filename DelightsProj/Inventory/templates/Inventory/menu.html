@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block head %}
+<link rel='stylesheet' href="{% static 'style.css' %}"/>
 {% endblock %}
 
 {% block content %}
-<div class="menu">
-    <h3>Menu</h3>
+
+<h2>Menu</h2>
 
 <table>
     <thead>
@@ -44,7 +45,6 @@
     </tbody>
 
 </table>
-</div>
 
 <p><a href="{% url 'addmenuitem' %}">Add new item name</a></p>
 
